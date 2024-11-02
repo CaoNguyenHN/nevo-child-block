@@ -42,89 +42,45 @@ function nevo_load_favicon() {
  * @return string Path to favicon.
  */
 function nevo_get_favicon_url() {
-	
-	$dir_uri = get_template_directory_uri();
-	
-	/**
-	 * Filter to allow child theme to assign its own custom favicon URL.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param bool $favicon_url 'false'.
-	 */
-	$pre = apply_filters( 'nevo_pre_load_favicon', false );
+    // Get the paths and URIs of the child and parent themes
+    $child_dir_uri  = get_stylesheet_directory_uri();
+    $parent_dir_uri = get_template_directory_uri();
+    $child_dir_path = get_stylesheet_directory();
+    $parent_dir_path = get_template_directory();
 
-	if ( $pre !== false ){
-		$favicon_url = $pre;
-	}elseif ( file_exists( $dir_uri . '/assets/images/favicon.png' ) ){
-		$favicon_url = $dir_uri . '/assets/images/favicon.png';
-	}else{
-		$favicon_url = $dir_uri . '/assets/images/favicon.png';
-	}
-	/**
-	 * Filter the favicon URL.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $favicon_url Favicon URL.
-	 */
-	$favicon_url = apply_filters( 'nevo_favicon_url', $favicon_url );
+    // Check the filter to allow the child theme to automatically assign a favicon
+    $pre = apply_filters('nevo_pre_load_favicon', false);
 
-	return trim( $favicon_url );
-	
+    // If there is a favicon from the filter, use it (ensure it's a valid URL)
+    if ($pre !== false) {
+        return esc_url(trim($pre));
+    }
+
+    // Function to check if favicon exists in a given path and return its URI
+    static $cached_favicon = null; // Cache to avoid redundant checks
+
+    if ($cached_favicon === null) {
+        $find_favicon = function($dir_path, $dir_uri) {
+            foreach (['png', 'ico'] as $ext) {
+                $favicon_path = "$dir_path/assets/images/favicon.$ext";
+                if (@is_file($favicon_path)) { // Use @ to suppress warnings if path is inaccessible
+                    return "$dir_uri/assets/images/favicon.$ext";
+                }
+            }
+            return false;
+        };
+
+        // Check child theme, then parent theme for favicon
+        $cached_favicon = $find_favicon($child_dir_path, $child_dir_uri) ?: 
+                          $find_favicon($parent_dir_path, $parent_dir_uri) ?: '';
+    }
+
+    // Allow editing of favicon path via filter
+    return esc_url(trim(apply_filters('nevo_favicon_url', $cached_favicon)));
 }
 
 add_action( 'wp_enqueue_scripts', 'child_theme_enqueue_scripts' );
 function child_theme_enqueue_scripts() {
-	if ( is_page_template('template-parts/frontpage.php') ) {
-		// enqueue SwiperJS CSS
-		//wp_enqueue_style('swiper-bundle-css', get_stylesheet_directory_uri() . '/assets/css/swiper-bundle.min.css', null, '9.1.1');
-		// enqueue Glightbox CSS
-		//wp_enqueue_style('glightbox-css', get_stylesheet_directory_uri() . '/assets/css/glightbox.min.css', null, '3.2.0');
-		// enqueue Aos CSS
-		wp_register_style('aos-style', get_stylesheet_directory_uri() . '/assets/css/aos.css', [], '3.0');
-		
-		// enqueue SwiperJS JavaScript
-		//wp_enqueue_script('swiper-bundle-js', get_stylesheet_directory_uri() . '/assets/js/swiper-bundle.min.js', null, '9.1.1');
-		
-		// enqueue Glightbox JavaScript
-		//wp_enqueue_script('glightbox-js', get_stylesheet_directory_uri() . '/assets/js/glightbox.min.js', null, '3.2.0');
-		
-		// enqueue Aos JavaScript
-		wp_register_script('aos-script', get_stylesheet_directory_uri() . '/assets/js/aos.js', [], '3.0', true);
-		
-		wp_enqueue_style( 'aos-style' );
-		wp_enqueue_script( 'aos-script' );
-		
-		// default aos init
-		/* 	bù đắp: -100
-			thời lượng: 1100
-			nới lỏng: giảm bớt
-			chậm trễ: 0
-			một lần: đúng
-		*/
-		$aos_init = apply_filters( 'nevo_child_aos_init',
-		'var aoswp_params = {
-		"offset":"-100",
-		"duration":"1100",
-		"easing":"ease",
-		"delay":"0",
-		"once":true};'
-		);
-		
-		// minify the aos init inline script before inject
-		$aos_init = preg_replace(['/(?:(?:\/\*(?:[^*]|(?:\*+[^*\/]))*\*+\/)|(?:(?<!\:|\\\|\'|\")\/\/.*))/','/\>[^\S ]+/s','/[^\S ]+\</s','#("(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\'|\/\*(?>.*?\*\/))|\s*+;\s*+(})\s*+|\s*+([*$~^|]?+=|[{};,>~]|\s(?![0-9\.])|!important\b)\s*+|([[(:])\s++|\s++([])])|\s++(:)\s*+(?!(?>[^{}"\']++|"(?:[^"\\\]++|\\\.)*+"|\'(?:[^\'\\\\]++|\\\.)*+\')*+{)|^\s++|\s++\z|(\s)\s+#si'],['','>','<','$1$2$3$4$5$6$7'], $aos_init);
-		
-		// inject aos init inline script
-		wp_add_inline_script( 'aos-script', wp_kses_data($aos_init), 'before' );
-	}
-	// Remove woo blocks-style
-	wp_dequeue_style( 'wc-blocks-style' );
-	// enqueue Main JavaScript
-	//wp_enqueue_script('main-js', get_stylesheet_directory_uri() . '/assets/js/main.js', array(), '0.1', true);
-	
-	//wp_enqueue_script('lazyload-js', get_stylesheet_directory_uri() . '/assets/js/lazyload.min.js', array(), '17.5.0', true);
-	//wp_enqueue_script('lazyload-init', get_stylesheet_directory_uri() . '/assets/js/lazyload-init.js', array('lazyload-js'), '1.0', true);
 	
 }
 
