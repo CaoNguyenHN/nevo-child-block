@@ -1,0 +1,169 @@
+/*
+ Theme Name:   Nevo Child Block
+ Theme URI:    https://nevothemes.com/nevo-magazine
+ Description:  The default child theme for the Nevo parent theme uses blocks (Gutenberg), which is a theme that contains pre-built block templates.
+ Author:       Nevothemes
+ Author URI:   https://nevothemes.com
+ Template:     nevo
+ Version:      0.1
+*/
+
+/*--------------------------------------------------------------
+# List styles
+-------------------------------------------------------------- */
+ul li a:not(.button), ol li a:not(.button) {
+    text-decoration: none;
+    color: inherit;
+}
+ul, ol,
+ul.is-style-default,
+ul.is-style-square,
+ol.is-style-default,
+ol.is-style-square {
+  padding-left: 22px;
+}
+
+ul.is-style-square {
+  list-style-type: square;
+}
+
+.is-style-checklist,
+.is-style-checklist-circle,
+.is-style-none {
+  list-style: none;
+  padding-left: 0;
+}
+
+.is-style-checklist li {
+  display: flex;
+  align-items: flex-start;
+}
+
+.is-style-checklist li::before {
+  content: "";
+  mask: url(assets/images/page-content/checklist.svg);
+  -webkit-mask: url(assets/images/page-content/checklist.svg);
+  height: 1.5em;
+  width: 1.5em;
+  min-height: 1.5em;
+  min-width: 1.5em;
+  background: currentcolor;
+  align-self: center;
+}
+
+.is-style-checklist-circle li {
+  display: flex;
+  align-items: flex-start;
+  column-gap: 8px;
+}
+
+.is-style-checklist-circle li::before {
+  content: "";
+  mask: url(assets/images/page-content/checklist-circle.svg);
+  -webkit-mask: url(assets/images/page-content/checklist-circle.svg);
+  height: 1em;
+  width: 1em;
+  min-height: 1em;
+  min-width: 1em;
+  background: currentcolor;
+  align-self: center;
+}
+
+/*--------------------------------------------------------------
+# Separator Block
+-------------------------------------------------------------- */
+hr.wp-block-separator.has-background {
+  height: 2px !important;
+}
+hr.wp-block-separator.is-style-dots {
+  height: auto !important;
+}
+hr.wp-block-separator.is-style-dotted {
+  width: 100% !important;
+  border-bottom: none !important;
+  height: 1px !important;
+  background: repeating-linear-gradient(90deg, currentcolor, currentcolor 2px, transparent 2px, transparent 6px) !important;
+}
+hr.wp-block-separator.is-style-wide-thin-line {
+  height: 1px !important;
+  border-width: 1px !important;
+  width: 100% !important;
+}
+hr.wp-block-separator.is-style-left-aligned {
+  margin-left: 0 !important;
+}
+hr.wp-block-separator.is-style-right-aligned {
+  margin-right: 0 !important;
+}
+/*--------------------------------------------------------------
+# WP Block Box Shadow
+--------------------------------------------------------------*/
+.wp-block-image.is-style-boxshadow img,
+.wp-block-column.is-style-boxshadow,
+.wp-block-columns.is-style-boxshadow,
+.wp-block-group.is-style-boxshadow {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+}
+.wp-block-image.is-style-boxshadow-medium img,
+.wp-block-column.is-style-boxshadow-medium,
+.wp-block-columns.is-style-boxshadow-medium,
+.wp-block-group.is-style-boxshadow-medium {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+}
+.wp-block-image.is-style-boxshadow-large img,
+.wp-block-column.is-style-boxshadow-large,
+.wp-block-columns.is-style-boxshadow-large,
+.wp-block-group.is-style-boxshadow-large {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+}
+.wp-block-image.is-style-boxshadow-hover img:hover,
+.wp-block-column.is-style-boxshadow-hover:hover,
+.wp-block-columns.is-style-boxshadow-hover:hover,
+.wp-block-group.is-style-boxshadow-hover:hover {
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+}
+/*--------------------------------------------------------------
+# WP Block Columns
+--------------------------------------------------------------*/
+.wp-block-columns.is-style-columns-122,
+.wp-block-columns.is-style-columns-124 {
+	display: grid!important;
+	grid-template-columns: var(--grid-template-columns);
+}
+@media (min-width: 992px){
+	.wp-block-columns.is-style-columns-122 {
+		--grid-template-columns: repeat(2,minmax(0,1fr));
+	}
+	.wp-block-columns.is-style-columns-124 {
+		--grid-template-columns: repeat(4,minmax(0,1fr));
+	}
+}
+@media (max-width: 991.98px){
+	.wp-block-columns.is-style-columns-122,
+	.wp-block-columns.is-style-columns-124 {
+		--grid-template-columns: repeat(2,minmax(0,1fr));
+	}
+}
+@media (max-width: 575.98px){
+	.wp-block-columns.is-style-columns-122,
+	.wp-block-columns.is-style-columns-124 {
+		--grid-template-columns: repeat(1,minmax(0,1fr));
+	}
+}
+
+@media (max-width: 781px) {
+    .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column {
+        flex-basis:100%!important
+    }
+}
+
+@media (min-width: 782px) {
+    .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column {
+        flex-basis:0;
+        flex-grow: 1
+    }
+
+    .wp-block-columns:not(.is-not-stacked-on-mobile)>.wp-block-column[style*=flex-basis] {
+        flex-grow: 0
+    }
+}
