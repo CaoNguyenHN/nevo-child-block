@@ -2,14 +2,14 @@
 /*--------------------------------------------------------------
 # List styles
 -------------------------------------------------------------- */
-body .editor-styles-wrapper ul li a:not(.button), body .editor-styles-wrapper ol li a:not(.button) {
+body.editor-styles-wrapper ul li a:not(.button), body.editor-styles-wrapper ol li a:not(.button) {
     text-decoration: none;
     color: inherit;
 }
-body .editor-styles-wrapperul, body .editor-styles-wrapperol {
+body.editor-styles-wrapper ul, body.editor-styles-wrapper ol {
 	margin: 0 0 1.5em;
 }
-body .editor-styles-wrapperul, body .editor-styles-wrapperol,
+body.editor-styles-wrapper ul, body.editor-styles-wrapper ol,
 ul.is-style-default,
 ul.is-style-square,
 ol.is-style-default,
@@ -17,23 +17,23 @@ ol.is-style-square {
   padding-left: 1.5rem;
 }
 
-body .editor-styles-wrapper ul.is-style-square {
+body.editor-styles-wrapper ul.is-style-square {
   list-style-type: square;
 }
 
-body .editor-styles-wrapper .is-style-checklist,
-body .editor-styles-wrapper .is-style-checklist-circle,
-body .editor-styles-wrapper .is-style-none {
+body.editor-styles-wrapper .is-style-checklist,
+body.editor-styles-wrapper .is-style-checklist-circle,
+body.editor-styles-wrapper .is-style-none {
   list-style: none;
   padding-left: 0;
 }
 
-body .editor-styles-wrapper .is-style-checklist li {
+body.editor-styles-wrapper .is-style-checklist li {
   display: flex;
   align-items: flex-start;
 }
 
-body .editor-styles-wrapper .is-style-checklist li::before {
+body.editor-styles-wrapper .is-style-checklist li::before {
   content: "";
   mask: url(../../assets/images/page-content/checklist.svg);
   -webkit-mask: url(../../assets/images/page-content/checklist.svg);
@@ -44,12 +44,12 @@ body .editor-styles-wrapper .is-style-checklist li::before {
   background: currentcolor;
   align-self: center;
 }
-body .editor-styles-wrapper .is-style-checklist-circle li {
+body.editor-styles-wrapper .is-style-checklist-circle li {
   display: flex;
   align-items: flex-start;
   column-gap: 8px;
 }
-body .editor-styles-wrapper .is-style-checklist-circle li::before {
+body.editor-styles-wrapper .is-style-checklist-circle li::before {
   content: "";
   mask: url(../../assets/images/page-content/checklist-circle.svg);
   -webkit-mask: url(../../assets/images/page-content/checklist-circle.svg);
@@ -63,83 +63,83 @@ body .editor-styles-wrapper .is-style-checklist-circle li::before {
 /*--------------------------------------------------------------
 # Separator Block
 -------------------------------------------------------------- */
-body .editor-styles-wrapper hr.wp-block-separator.has-background {
+body.editor-styles-wrapper hr.wp-block-separator.has-background {
   height: 2px !important;
 }
-body .editor-styles-wrapper hr.wp-block-separator.is-style-dots {
+body.editor-styles-wrapper hr.wp-block-separator.is-style-dots {
   height: auto !important;
 }
-body .editor-styles-wrapper hr.wp-block-separator.is-style-dotted {
+body.editor-styles-wrapper hr.wp-block-separator.is-style-dotted {
   width: 100% !important;
   border-bottom: none !important;
   height: 1px !important;
   background: repeating-linear-gradient(90deg, currentcolor, currentcolor 2px, transparent 2px, transparent 6px) !important;
 }
-body .editor-styles-wrapper hr.wp-block-separator.is-style-wide-thin-line {
+body.editor-styles-wrapper hr.wp-block-separator.is-style-wide-thin-line {
   padding-bottom: 0.0px;
   padding-top: 0.0px;
   height: 1px !important;
   border-width: 1px !important;
   width: 100% !important;
 }
-body .editor-styles-wrapper hr.wp-block-separator.is-style-left-aligned {
+body.editor-styles-wrapper hr.wp-block-separator.is-style-left-aligned {
   margin-left: 0 !important;
 }
-body .editor-styles-wrapper hr.wp-block-separator.is-style-right-aligned {
+body.editor-styles-wrapper hr.wp-block-separator.is-style-right-aligned {
   margin-right: 0 !important;
 }
 /*--------------------------------------------------------------
 # WP Box Shadow
 --------------------------------------------------------------*/
-body .editor-styles-wrapper .wp-block-image.is-style-boxshadow img,
-body .editor-styles-wrapper .wp-block-column.is-style-boxshadow,
-body .editor-styles-wrapper .wp-block-columns.is-style-boxshadow,
-body .editor-styles-wrapper .wp-block-group.is-style-boxshadow {
+body.editor-styles-wrapper .wp-block-image.is-style-boxshadow img,
+body.editor-styles-wrapper .wp-block-column.is-style-boxshadow,
+body.editor-styles-wrapper .wp-block-columns.is-style-boxshadow,
+body.editor-styles-wrapper .wp-block-group.is-style-boxshadow {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
 }
-body .editor-styles-wrapper .wp-block-image.is-style-boxshadow-medium img,
-body .editor-styles-wrapper .wp-block-column.is-style-boxshadow-medium,
-body .editor-styles-wrapper .wp-block-columns.is-style-boxshadow-medium,
-body .editor-styles-wrapper .wp-block-group.is-style-boxshadow-medium {
+body.editor-styles-wrapper .wp-block-image.is-style-boxshadow-medium img,
+body.editor-styles-wrapper .wp-block-column.is-style-boxshadow-medium,
+body.editor-styles-wrapper .wp-block-columns.is-style-boxshadow-medium,
+body.editor-styles-wrapper .wp-block-group.is-style-boxshadow-medium {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
 }
-body .editor-styles-wrapper .wp-block-image.is-style-boxshadow-large img,
-body .editor-styles-wrapper .wp-block-column.is-style-boxshadow-large,
-body .editor-styles-wrapper .wp-block-columns.is-style-boxshadow-large,
-body .editor-styles-wrapper .wp-block-group.is-style-boxshadow-large {
+body.editor-styles-wrapper .wp-block-image.is-style-boxshadow-large img,
+body.editor-styles-wrapper .wp-block-column.is-style-boxshadow-large,
+body.editor-styles-wrapper .wp-block-columns.is-style-boxshadow-large,
+body.editor-styles-wrapper .wp-block-group.is-style-boxshadow-large {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
 }
-body .editor-styles-wrapper .wp-block-image.is-style-boxshadow-hover img:hover,
-body .editor-styles-wrapper .wp-block-column.is-style-boxshadow-hover:hover,
-body .editor-styles-wrapper .wp-block-columns.is-style-boxshadow-hover:hover,
-body .editor-styles-wrapper .wp-block-group.is-style-boxshadow-hover:hover {
+body.editor-styles-wrapper .wp-block-image.is-style-boxshadow-hover img:hover,
+body.editor-styles-wrapper .wp-block-column.is-style-boxshadow-hover:hover,
+body.editor-styles-wrapper .wp-block-columns.is-style-boxshadow-hover:hover,
+body.editor-styles-wrapper .wp-block-group.is-style-boxshadow-hover:hover {
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
 }
 /*--------------------------------------------------------------
 # WP Block Columns
 --------------------------------------------------------------*/
-body .editor-styles-wrapper .wp-block-columns.is-style-columns-122,
-body .editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
+body.editor-styles-wrapper .wp-block-columns.is-style-columns-122,
+body.editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
 	display: grid!important;
 	grid-template-columns: var(--grid-template-columns);
 }
 @media (min-width: 992px){
-	body .editor-styles-wrapper .wp-block-columns.is-style-columns-122 {
+	body.editor-styles-wrapper .wp-block-columns.is-style-columns-122 {
 		--grid-template-columns: repeat(2,minmax(0,1fr));
 	}
-	body .editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
+	body.editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
 		--grid-template-columns: repeat(4,minmax(0,1fr));
 	}
 }
 @media (max-width: 991.98px){
-	body .editor-styles-wrapper .wp-block-columns.is-style-columns-122,
-	body .editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
+	body.editor-styles-wrapper .wp-block-columns.is-style-columns-122,
+	body.editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
 		--grid-template-columns: repeat(2,minmax(0,1fr));
 	}
 }
 @media (max-width: 575.98px){
-	body .editor-styles-wrapper .wp-block-columns.is-style-columns-122,
-	body .editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
+	body.editor-styles-wrapper .wp-block-columns.is-style-columns-122,
+	body.editor-styles-wrapper .wp-block-columns.is-style-columns-124 {
 		--grid-template-columns: repeat(1,minmax(0,1fr));
 	}
 }
