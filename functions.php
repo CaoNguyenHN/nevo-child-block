@@ -157,12 +157,15 @@ $optimisations = [
 $optimize = new Optimize( $optimisations );
 
 // Add more editor assets.
+add_action( 'enqueue_block_assets', 'nevo_assets' );
 add_action( 'enqueue_block_editor_assets', 'nevo_assets' );
 /**
  * Add more editor styles and scripts
  */
 function nevo_assets() {
-	wp_enqueue_style('nevo-editor-css', get_stylesheet_directory_uri() . '/assets/css/editor-style.css', null, '1.0');
+	if ( is_admin() && isset( $_GET['post'] ) ) {
+        wp_enqueue_style('nevo-editor-css', get_stylesheet_directory_uri() . '/assets/css/editor-style.css', null, '1.0');
+    }
 }
 
 add_action( 'init', 'nevo_register_block' );
