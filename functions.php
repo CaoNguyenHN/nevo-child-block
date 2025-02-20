@@ -100,17 +100,17 @@ $optimisations = [
                                         // Defer the loading of all registered scripts using the loadCSS function from Filament Group.
     'defer_JS'                  => false,  // Thêm defer="defer" cho tất cả các tệp JavaScript đã được đăng ký. (trì hoãn quá trình xử lý JS)
                                         // Add defer="defer" to all registered JavaScript files. (delays JS execution)
-    'classic_widget'            => true, // Bật màn hình cài đặt widget cổ điển trong Giao diện - Widget và Tùy biến. Vô hiệu hóa trình chỉnh sửa khối khỏi việc quản lý tiện ích con.
+    'classic_widget'            => false, // Bật màn hình cài đặt widget cổ điển trong Giao diện - Widget và Tùy biến. Vô hiệu hóa trình chỉnh sửa khối khỏi việc quản lý tiện ích con.
                                         // Enable the classic widget screen in Appearance - Widgets and Customizer. Disable block editor for widget management.
     'disable_comments'          => false, // Tắt chức năng bình luận và loại bỏ nó khỏi menu quản trị.
                                         // Disable the comment feature and remove it from the admin menu.
     'disable_classic_styles'    => true, // Loại bỏ kiểu dáng của giao diện classic theme.
                                         // Remove styles associated with classic themes.
-    'disable_block_styling'     => true, // Loại bỏ kiểu dáng mặc định của các khối Gutenberg.
+    'disable_block_styling'     => false, // Loại bỏ kiểu dáng mặc định của các khối Gutenberg.
                                         // Remove default Gutenberg block styles.
-    'disable_global_styles'     => true, // Xóa các biến CSS WordPress/Gutenberg mặc định và định nghĩa SVG khỏi giao diện người dùng.
+    'disable_global_styles'     => false, // Xóa các biến CSS WordPress/Gutenberg mặc định và định nghĩa SVG khỏi giao diện người dùng.
                                         // Remove default WordPress/Gutenberg CSS variables and SVG definitions from the frontend.
-    'disable_embed'             => true, // Loại bỏ các tệp script được đăng ký bởi hệ thống nhúng phương tiện của WordPress.
+    'disable_embed'             => false, // Loại bỏ các tệp script được đăng ký bởi hệ thống nhúng phương tiện của WordPress.
                                         // Remove scripts registered by WordPress media embedding.
     'disable_emoji'             => true, // Loại bỏ các tệp script được đăng ký để hiển thị biểu tượng cảm xúc.
                                         // Remove scripts registered for emoji rendering.
@@ -122,7 +122,7 @@ $optimisations = [
                                         // Remove the default jQuery script. Do not remove if the site or plugins rely on jQuery.
     'disable_jquery_migrate'    => $true, // Loại bỏ tệp script jQuery Migrate. Nếu trang web hoặc plugin phụ thuộc jQuery thì không nên loại bỏ.
                                         // Remove jQuery Migrate script. Do not remove if the site or plugins rely on jQuery.
-    'disable_rest_api'          => true, // Vô hiệu hóa REST API.
+    'disable_rest_api'          => false, // Vô hiệu hóa REST API.
                                         // Disable REST API.
     'disable_RSD'               => true, // Loại bỏ liên kết RSD trong phần head của trang web.
                                         // Remove RSD links from the website's head section.
